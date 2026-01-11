@@ -5,6 +5,9 @@ import Features from '../../components/Landing/Features';
 import HowItWorks from '../../components/Landing/HowItWorks';
 import Footer from '../../components/Shared/Footer';
 import Navbar from '../../components/Shared/Navbar';
+import Faq from '../../components/Landing/Faq';
+import Testimonials from '../../components/Landing/Testimonials';
+import CTA from '../../components/Landing/CTA';
 
 const LandingPage = () => {
   return (
@@ -16,6 +19,8 @@ const LandingPage = () => {
         <div id="how-it-works">
           <HowItWorks />
         </div>
+
+        <Faq />
         
         {/* Comparison Section (Simplified) */}
         <section id="pricing" className="py-24 bg-background-alt overflow-hidden">
@@ -60,6 +65,8 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
+        <Testimonials />
+        <CTA />
       </main>
       <Footer />
     </div>
