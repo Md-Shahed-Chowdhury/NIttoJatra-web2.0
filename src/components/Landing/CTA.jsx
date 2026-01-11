@@ -5,11 +5,12 @@ import { ArrowRight } from 'lucide-react';
 
 const CTA = () => {
     return (
-        <section className="py-24 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-brand transform -skew-y-2 scale-110 z-0"></div>
+        <section className="py-32 relative overflow-hidden bg-black">
+            <div className="absolute inset-0 bg-gradient-brand opacity-20 transform -skew-y-2 scale-110 z-0 mix-blend-screen"></div>
             
             <div className="section-container relative z-10">
-                <div className="bg-black/20 backdrop-blur-lg rounded-[3rem] p-12 md:p-20 text-center border border-white/10 shadow-2xl">
+                <div className="bg-gradient-to-br from-gray-900 to-black rounded-[3rem] p-12 md:p-24 text-center border border-white/10 shadow-2xl relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 font-heading">
                         Ready to Upgrade Your Commute?
                     </h2>

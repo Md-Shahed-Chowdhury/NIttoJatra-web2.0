@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../ui/Card';
+// import Card from '../ui/Card';
 import { 
   MapPin, 
   TrendingDown, 
@@ -50,29 +50,33 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="bg-background-alt py-24">
-      <div className="section-container">
-        <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold font-heading text-text-primary uppercase tracking-tight">
+    <section className="bg-black py-24 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="section-container relative z-10">
+        <div className="text-center max-w-2xl mx-auto space-y-4 mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold font-heading text-white uppercase tracking-tight">
             Designed for the <br /> 
-            <span className="text-primary-light italic">Modern Commuter</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-secondary-light italic">Modern Commuter</span>
           </h2>
-          <p className="text-text-secondary">
+          <p className="text-gray-400 text-lg leading-relaxed">
             Everything you need for a stress-free daily commute, packed into one elegant platform.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="group p-8 hover:bg-white hover:border-primary-light/10">
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 ${feature.color}`}>
-                <feature.icon size={28} />
+            <div key={index} className="group p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 bg-gradient-to-br ${feature.color.replace('text-', 'from-').split(' ')[0]} to-transparent`}>
+                 {/* Adjusting icon color logic for gradient bg */}
+                 <feature.icon size={28} className="text-white" />
               </div>
-              <h3 className="text-xl font-bold text-text-primary mb-3 font-heading">{feature.title}</h3>
-              <p className="text-text-secondary leading-relaxed">
+              <h3 className="text-xl font-bold text-white mb-3 font-heading tracking-wide">{feature.title}</h3>
+              <p className="text-gray-400 leading-relaxed text-sm">
                 {feature.description}
               </p>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
