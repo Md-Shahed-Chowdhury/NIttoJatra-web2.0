@@ -1,0 +1,46 @@
+{
+  "riders": [
+    {
+      "id": "u001",
+      "email": "rider@example.com",
+      "password": "rider123",
+      "role": "rider",
+      "name": "Ahmed Rahman",
+      "phone": "+880171234567",
+      "avatar": "https://i.pravatar.cc/150?u=u001",
+      "rating": 4.8,
+      "completedRides": 45,
+      "badges": ["Eco-Warrior", "Early Bird", "5-Star Rider"],
+      "emergencyContact": "+8801700000000",
+      "joinedDate": "2023-10-15"
+    }
+  ],
+  "drivers": [
+    {
+      "id": "d001",
+      "email": "driver@example.com",
+      "password": "driver123",
+      "role": "driver",
+      "name": "Karim Uddin",
+      "phone": "+880181234567",
+      "avatar": "https://i.pravatar.cc/150?u=d001",
+      "rating": 4.9,
+      "completedRides": 120,
+      "badges": ["Top Rated", "Safe Driver", "Punctual"],
+      "joinedDate": "2023-05-20",
+      "vehicles": [
+        {
+          "id": "v001",
+          "make": "Toyota",
+          "model": "Corolla",
+          "year": "2021",
+          "color": "Silver",
+          "plate": "Dhaka-Metro-Ga-12-3456",
+          "capacity": 4,
+          "amenities": ["AC", "Music", "Phone Charging"],
+          "image": "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "conversations": [
+    {
+      "id": "c001",
+      "participants": ["u001", "d001"],
+      "lastMessage": "I'm near the gate.",
+      "timestamp": "2026-01-11T07:55:00Z",
+      "unreadCount": 1,
+      "messages": [
+        {
+          "senderId": "u001",
+          "text": "Hi Karim, are you on your way?",
+          "timestamp": "2026-01-11T07:50:00Z"
+        },
+        {
+          "senderId": "d001",
+          "text": "Yes, I'm near the gate.",
+          "timestamp": "2026-01-11T07:55:00Z"
+        }
+      ]
+    }
+  ]
+}

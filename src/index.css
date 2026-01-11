@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: theme('colors.background.DEFAULT');
+  color: theme('colors.text.primary');
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-premium;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-primary text-white font-semibold py-3 px-6 rounded-xl shadow-premium hover:shadow-premium-hover transition-all duration-300 transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-primary-light text-primary-light font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-primary-light/5 active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  .card-premium {
+    @apply bg-white rounded-2xl p-6 shadow-premium hover:shadow-premium-hover transition-all duration-300 border border-transparent hover:border-primary-light/10;
+  }
+
+  .heading-1 {
+    @apply font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-text-primary;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: theme('colors.background.muted');
+}
+::-webkit-scrollbar-thumb {
+  background: theme('colors.primary.light');
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.primary.DEFAULT');
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}

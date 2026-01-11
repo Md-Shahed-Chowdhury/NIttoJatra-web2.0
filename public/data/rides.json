@@ -1,0 +1,67 @@
+{
+  "available_rides": [
+    {
+      "id": "r001",
+      "driverId": "d001",
+      "from": "Uttara Sector 7",
+      "to": "Dhanmondi 27",
+      "departureTime": "08:00 AM",
+      "days": ["Mon", "Tue", "Wed", "Thu", "Sun"],
+      "pricePerRide": 150,
+      "subscriptionPrices": {
+        "weekly": 650,
+        "monthly": 2400
+      },
+      "vehicleType": "Car",
+      "seatsTotal": 4,
+      "seatsAvailable": 2,
+      "womenOnly": false,
+      "stops": ["Airport", "Banani", "Farmgate"],
+      "amenities": ["AC", "Music"],
+      "description": "Daily office commute. Punctuality is priority."
+    },
+    {
+      "id": "r002",
+      "driverId": "d001",
+      "from": "Mirpur 10",
+      "to": "Gulshan 1",
+      "departureTime": "08:30 AM",
+      "days": ["Mon", "Wed", "Fri"],
+      "pricePerRide": 120,
+      "subscriptionPrices": {
+        "weekly": 320,
+        "monthly": 1200
+      },
+      "vehicleType": "Car",
+      "seatsTotal": 4,
+      "seatsAvailable": 3,
+      "womenOnly": true,
+      "stops": ["Agargaon", "Mohakhali"],
+      "amenities": ["AC", "Phone Charging"],
+      "description": "Safe commute for women office-goers."
+    }
+  ],
+  "active_subscriptions": [
+    {
+      "id": "s001",
+      "riderId": "u001",
+      "rideId": "r001",
+      "plan": "Monthly",
+      "startDate": "2026-01-01",
+      "endDate": "2026-01-31",
+      "ridesCompleted": 8,
+      "ridesTotal": 20,
+      "status": "Active"
+    }
+  ],
+  "past_rides": [
+    {
+      "id": "p001",
+      "riderId": "u001",
+      "rideId": "r001",
+      "date": "2025-12-28",
+      "status": "Completed",
+      "ratingGiven": 5
+    }
+  ]
+}

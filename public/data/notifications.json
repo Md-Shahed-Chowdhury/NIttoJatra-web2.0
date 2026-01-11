@@ -1,0 +1,22 @@
+{
+  "notifications": [
+    {
+      "id": "n001",
+      "userId": "u001",
+      "type": "ride_update",
+      "title": "Driver Arrived",
+      "message": "Your driver Karim is at the pickup location.",
+      "timestamp": "2026-01-11T08:00:00Z",
+      "read": false
+    },
+    {
+      "id": "n002",
+      "userId": "u001",
+      "type": "payment",
+      "title": "Payment Successful",
+      "message": "Your subscription for Uttara-Dhanmondi has been renewed.",
+      "timestamp": "2026-01-10T15:30:00Z",
+      "read": true
+    }
+  ]
+}
