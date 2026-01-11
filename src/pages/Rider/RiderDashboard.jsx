@@ -12,9 +12,11 @@ import {
   TrendingUp,
   Award
 } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
 import Button from '../../components/ui/Button';
 
 const RiderDashboard = () => {
+  const navigate = useNavigate();
   return (
     <div className="space-y-8 animate-fade-in">
       {/* Header */}
@@ -24,12 +26,16 @@ const RiderDashboard = () => {
           <p className="text-text-secondary">Here's what's happening with your commute today.</p>
         </div>
         <div className="flex gap-3">
-          <Button variant="outline" className="h-11 px-4" icon={Bell}>
-            Notifications
-          </Button>
-          <Button variant="primary" className="h-11 shadow-lg" icon={Search}>
-            Find a Ride
-          </Button>
+          <Link to="/rider/notifications">
+            <Button variant="outline" className="h-11 px-4" icon={Bell}>
+              Notifications
+            </Button>
+          </Link>
+          <Link to="/rider/find">
+            <Button variant="primary" className="h-11 shadow-lg" icon={Search}>
+              Find a Ride
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -70,8 +76,8 @@ const RiderDashboard = () => {
               </div>
               
               <div className="flex gap-4 pt-4">
-                <Button className="flex-1 md:flex-none h-12">Track Live</Button>
-                <Button variant="outline" className="flex-1 md:flex-none h-12">View Route</Button>
+                <Button className="flex-1 md:flex-none h-12" onClick={() => navigate('/rider/track')}>Track Live</Button>
+                <Button variant="outline" className="flex-1 md:flex-none h-12" onClick={() => navigate('/rider/view-route')}>View Route</Button>
               </div>
             </div>
             
@@ -120,9 +126,11 @@ const RiderDashboard = () => {
               Your subscription renews in <span className="font-bold text-white">12 days</span>.
             </p>
             
-            <Button className="w-full bg-white text-primary-dark hover:bg-white/90 shadow-xl py-4">
-              Manage Subscription
-            </Button>
+            <Link to="/rider/payment">
+              <Button className="w-full bg-white text-primary-dark hover:bg-white/90 shadow-xl py-4">
+                Manage Subscription
+              </Button>
+            </Link>
           </div>
         </Card>
       </div>

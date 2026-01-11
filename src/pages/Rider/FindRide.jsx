@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import Card from '../../components/ui/Card';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
@@ -11,10 +12,12 @@ import {
   Car, 
   Zap, 
   ShieldCheck,
-  ChevronDown
+  ChevronDown,
+  Star
 } from 'lucide-react';
 
 const FindRide = () => {
+  const navigate = useNavigate();
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
 
@@ -167,70 +170,85 @@ const FindRide = () => {
               </div>
            </div>
 
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {mockRides.map((ride) => (
-                <Card key={ride.id} className="p-0 overflow-hidden flex flex-col group h-full">
-                  <div className="p-6 space-y-4 flex-1">
+                <Card key={ride.id} className="p-0 overflow-hidden flex flex-col group h-full hover:shadow-2xl transition-all border-primary-light/5 hover:border-primary-light/20">
+                  <div className="p-6 space-y-6 flex-1">
                     <div className="flex justify-between items-start">
-                      <div className="flex items-center gap-2">
-                        <img src={ride.avatar} alt={ride.driver} className="w-10 h-10 rounded-full border border-background-muted" />
+                      <div className="flex items-center gap-3">
+                        <div className="relative">
+                          <img src={ride.avatar} alt={ride.driver} className="w-12 h-12 rounded-full border-2 border-white shadow-sm" />
+                          <div className="absolute -bottom-1 -right-1 bg-emerald-500 border-2 border-white w-4 h-4 rounded-full" title="Verified Driver" />
+                        </div>
                         <div>
-                          <p className="font-bold text-sm leading-none">{ride.driver}</p>
-                          <p className="text-[10px] text-amber-500 font-bold tracking-tight">⭐ {ride.rating} Driver</p>
+                          <p className="font-bold text-base leading-none">{ride.driver}</p>
+                          <div className="flex items-center gap-1 mt-1">
+                            <Star size={12} className="fill-amber-400 text-amber-400" />
+                            <span className="text-xs font-bold text-text-primary">{ride.rating}</span>
+                            <span className="text-[10px] text-text-secondary">(124 reviews)</span>
+                          </div>
                         </div>
                       </div>
                       {ride.womenOnly && (
-                        <div className="bg-pink-100 text-pink-600 px-2 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider">
+                        <div className="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider flex items-center gap-1">
+                          <ShieldCheck size={12} />
                           Women Only
                         </div>
                       )}
                     </div>
 
-                    <div className="space-y-4 pt-2">
-                       <div className="flex items-start gap-3">
-                          <div className="flex flex-col items-center pt-1">
-                             <div className="w-2 h-2 rounded-full border-2 border-primary-light" />
-                             <div className="w-px h-6 bg-background-muted" />
-                             <div className="w-2 h-2 rounded-full bg-secondary" />
+                    {/* Stylized Path Visualization */}
+                    <div className="relative py-2">
+                       <div className="absolute left-1.5 top-1/2 -translate-y-1/2 w-[calc(100%-12px)] h-0.5 bg-background-muted z-0 border-t border-dashed border-text-secondary/20" />
+                       <div className="relative z-10 flex justify-between items-center px-0.5">
+                          <div className="w-2.5 h-2.5 rounded-full border-2 border-primary-light bg-white" />
+                          <div className="flex-1 flex justify-center">
+                             <div className="w-1.5 h-1.5 rounded-full bg-background-muted" />
                           </div>
-                          <div className="space-y-3 flex-1">
-                             <div>
-                               <p className="text-[10px] uppercase font-bold text-text-secondary tracking-tighter">Pickup</p>
-                               <p className="text-sm font-bold truncate">{ride.from}</p>
-                             </div>
-                             <div>
-                               <p className="text-[10px] uppercase font-bold text-text-secondary tracking-tighter">Dropoff</p>
-                               <p className="text-sm font-bold truncate">{ride.to}</p>
-                             </div>
-                          </div>
+                          <div className="w-2.5 h-2.5 rounded-full bg-secondary" />
+                       </div>
+                       <div className="flex justify-between text-[10px] font-bold text-text-secondary mt-2 uppercase tracking-tighter">
+                          <span className="truncate max-w-[80px]">{ride.from.split(' ')[0]}</span>
+                          <span className="truncate max-w-[80px]">{ride.to.split(' ')[0]}</span>
                        </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 pt-2">
-                       <div className="flex items-center gap-1 px-2 py-1 bg-background-muted rounded-lg text-[10px] font-bold">
-                          <Clock size={12} /> {ride.time}
+                    <div className="grid grid-cols-2 gap-4 pt-2">
+                       <div className="space-y-1">
+                          <p className="text-[10px] font-bold text-text-secondary uppercase">Schedule</p>
+                          <div className="flex items-center gap-1.5">
+                             <Clock size={14} className="text-primary-light" />
+                             <p className="text-xs font-bold">{ride.time}</p>
+                          </div>
+                          <p className="text-[10px] font-medium text-text-secondary">{ride.days.join(', ')}</p>
                        </div>
-                       <div className="flex items-center gap-1 px-2 py-1 bg-background-muted rounded-lg text-[10px] font-bold">
-                          <Users size={12} /> {ride.seats} seats
-                       </div>
-                       <div className="flex items-center gap-1 px-2 py-1 bg-background-muted rounded-lg text-[10px] font-bold">
-                          <Car size={12} /> {ride.vehicle.split(' ')[0]}
+                       <div className="space-y-1">
+                          <p className="text-[10px] font-bold text-text-secondary uppercase">Vehicle</p>
+                          <div className="flex items-center gap-1.5">
+                             <Car size={14} className="text-primary-light" />
+                             <p className="text-xs font-bold">{ride.vehicle}</p>
+                          </div>
+                          <p className="text-[10px] font-medium text-emerald-500 font-bold">{ride.seats} available</p>
                        </div>
                     </div>
                   </div>
 
                   <div className="p-6 bg-background-alt border-t border-background-muted mt-auto">
-                    <div className="flex items-end justify-between mb-4">
-                       <div>
-                          <p className="text-[10px] font-bold text-text-secondary uppercase">From</p>
-                          <p className="text-xl font-black">৳{ride.price}<span className="text-xs font-normal text-text-secondary"> /ride</span></p>
+                    <div className="flex items-end justify-between mb-6">
+                       <div className="space-y-1">
+                          <p className="text-[10px] font-bold text-text-secondary uppercase leading-none">Single Trip</p>
+                          <p className="text-2xl font-black font-accent leading-none">৳{ride.price}</p>
                        </div>
-                       <div className="text-right">
-                          <p className="text-[10px] font-bold text-primary-light uppercase">Subscribed</p>
-                          <p className="text-lg font-black text-primary-light">৳{ride.subPrice}<span className="text-xs font-normal text-text-secondary"> /mo</span></p>
+                       <div className="text-right space-y-1">
+                          <p className="text-[10px] font-bold text-primary-light uppercase leading-none">Subscription</p>
+                          <p className="text-xl font-black text-primary-light leading-none">৳{ride.subPrice}<span className="text-xs font-medium text-text-secondary">/mo</span></p>
                        </div>
                     </div>
-                    <Button variant="primary" className="w-full h-12 shadow-md group-hover:shadow-primary-light/20 transition-all">
+                    <Button 
+                      variant="primary" 
+                      className="w-full h-12 shadow-md bg-gradient-to-r hover:from-primary hover:to-primary-light transition-all duration-300"
+                      onClick={() => navigate(`/rider/ride/${ride.id}`)}
+                    >
                       View Details
                     </Button>
                   </div>

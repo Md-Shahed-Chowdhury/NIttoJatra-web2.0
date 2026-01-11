@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
@@ -11,18 +12,23 @@ import {
   Calendar,
   ChevronLeft
 } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
 
 const Payment = () => {
-  const [step, setStep] = useState(1);
-  const [method, setMethod] = useState('bkash');
   const navigate = useNavigate();
+  const [step, setStep] = useState(1);
+  const [method, setMethod] = useState('card');
+
+  const goToDashboard = () => navigate('/rider/my-rides');
+
+  const nextStep = () => {
+    if (step < 3) setStep(step + 1);
+  };
 
   const handlePayment = () => {
-    setStep(3);
+    // Simulated payment processing
     setTimeout(() => {
-      navigate('/rider');
-    }, 5000);
+      setStep(3);
+    }, 1500);
   };
 
   return (
@@ -218,9 +224,10 @@ const Payment = () => {
            </Card>
 
            <div className="flex flex-col gap-4 w-full max-w-sm pt-6">
-              <Link to="/rider">
-                 <Button variant="primary" className="w-full h-14 shadow-lg">Go to Dashboard</Button>
-              </Link>
+              <p className="text-text-secondary">Your subscription is active. You can now track your rides and communicate with your driver.</p>
+              <Button variant="primary" className="h-14 px-12" onClick={goToDashboard}>
+                Go to My Rides
+              </Button>
               <Button variant="ghost" className="h-12">Download Receipt (PDF)</Button>
            </div>
            

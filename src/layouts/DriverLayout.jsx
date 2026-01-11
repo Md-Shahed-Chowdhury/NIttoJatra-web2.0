@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   BarChart3, 
   Map, 
@@ -22,6 +22,7 @@ const DriverLayout = ({ children }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const menuItems = [
     { name: 'Overview', icon: LayoutDashboard, path: '/driver' },
@@ -30,6 +31,7 @@ const DriverLayout = ({ children }) => {
     { name: 'Earnings', icon: BarChart3, path: '/driver/earnings' },
     { name: 'Riders', icon: Users, path: '/driver/riders' },
     { name: 'Messages', icon: MessageSquare, path: '/driver/messages', badge: 5 },
+    { name: 'Notifications', icon: Bell, path: '/driver/notifications' },
     { name: 'Profile', icon: User, path: '/driver/profile' },
   ];
 
@@ -97,9 +99,17 @@ const DriverLayout = ({ children }) => {
               className="w-10 h-10 rounded-xl object-cover ring-2 ring-white/10"
             />
             {!isCollapsed && (
-              <div className="flex-1 min-w-0">
-                <p className="font-bold text-sm truncate">Karim Uddin</p>
-                <p className="text-xs text-secondary truncate">Driver • 4.9★</p>
+              <div className="flex-1 min-w-0 flex items-center justify-between">
+                <div className="min-w-0">
+                  <p className="font-bold text-sm truncate">Karim Uddin</p>
+                  <p className="text-xs text-secondary truncate">Driver • 4.9★</p>
+                </div>
+                <button 
+                  onClick={() => navigate('/')}
+                  className="text-white/50 hover:text-secondary transition-colors"
+                >
+                  <LogOut size={18} />
+                </button>
               </div>
             )}
           </div>

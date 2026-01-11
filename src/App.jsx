@@ -11,12 +11,23 @@ import DriverDashboard from './pages/Driver/DriverDashboard';
 import PostRide from './pages/Driver/PostRide';
 import Chat from './components/Shared/Chat';
 import Profile from './pages/Shared/Profile';
+import Notifications from './pages/Shared/Notifications';
+import TrackRide from './pages/Rider/TrackRide';
+import ViewRoute from './pages/Rider/ViewRoute';
+import Login from './pages/Public/Login';
+import Signup from './pages/Public/Signup';
+import ManageRoutes from './pages/Driver/ManageRoutes';
+import Earnings from './pages/Driver/Earnings';
+import RidersList from './pages/Driver/RidersList';
+import SafetyCenter from './pages/Rider/SafetyCenter';
 
 function App() {
   return (
     <div className="min-h-screen bg-background text-text-primary">
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         
         {/* Rider Routes */}
         <Route path="/rider" element={
@@ -49,9 +60,24 @@ function App() {
             <Chat role="rider" />
           </RiderLayout>
         } />
+        <Route path="/rider/track" element={
+          <RiderLayout>
+            <TrackRide />
+          </RiderLayout>
+        } />
+        <Route path="/rider/view-route" element={
+          <RiderLayout>
+            <ViewRoute />
+          </RiderLayout>
+        } />
         <Route path="/rider/safety" element={
           <RiderLayout>
-            <div>Safety Page</div>
+            <SafetyCenter />
+          </RiderLayout>
+        } />
+        <Route path="/rider/notifications" element={
+          <RiderLayout>
+            <Notifications />
           </RiderLayout>
         } />
         <Route path="/rider/profile" element={
@@ -73,22 +99,27 @@ function App() {
         } />
         <Route path="/driver/routes" element={
           <DriverLayout>
-            <div>Manage Routes Page</div>
+            <ManageRoutes />
           </DriverLayout>
         } />
         <Route path="/driver/earnings" element={
           <DriverLayout>
-            <div>Earnings Page</div>
+            <Earnings />
           </DriverLayout>
         } />
         <Route path="/driver/riders" element={
           <DriverLayout>
-            <div>Riders Page</div>
+            <RidersList />
           </DriverLayout>
         } />
         <Route path="/driver/messages" element={
           <DriverLayout>
             <Chat role="driver" />
+          </DriverLayout>
+        } />
+        <Route path="/driver/notifications" element={
+          <DriverLayout>
+            <Notifications />
           </DriverLayout>
         } />
         <Route path="/driver/profile" element={

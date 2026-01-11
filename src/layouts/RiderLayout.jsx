@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Home, 
   Search, 
@@ -21,12 +21,14 @@ const RiderLayout = ({ children }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const menuItems = [
     { name: 'Dashboard', icon: Home, path: '/rider' },
     { name: 'Find Ride', icon: Search, path: '/rider/find' },
     { name: 'My Rides', icon: Calendar, path: '/rider/my-rides' },
     { name: 'Messages', icon: MessageSquare, path: '/rider/messages', badge: 2 },
+    { name: 'Notifications', icon: Bell, path: '/rider/notifications' },
     { name: 'Safety', icon: Shield, path: '/rider/safety' },
     { name: 'Profile', icon: User, path: '/rider/profile' },
   ];
@@ -105,7 +107,10 @@ const RiderLayout = ({ children }) => {
               </div>
             )}
             {!isCollapsed && (
-               <button className="text-text-secondary hover:text-red-500 transition-colors">
+               <button 
+                 onClick={() => navigate('/')}
+                 className="text-text-secondary hover:text-red-500 transition-colors"
+               >
                   <LogOut size={18} />
                </button>
             )}

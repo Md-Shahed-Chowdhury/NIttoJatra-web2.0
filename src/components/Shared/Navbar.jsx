@@ -37,31 +37,16 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              to={link.path}
-              className={`font-medium transition-colors hover:text-primary-light ${
-                isScrolled ? 'text-text-primary' : 'text-text-primary'
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
+        {/* Center - Empty in this simplified version */}
+        <div className="hidden md:flex flex-1" />
 
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/rider">
+          <Link to="/login">
             <Button variant="ghost" className="px-4">Log In</Button>
           </Link>
-          <Link to="/rider">
+          <Link to="/signup">
             <Button variant="primary" className="h-11">Sign Up</Button>
-          </Link>
-          <Link to="/driver">
-            <Button variant="outline" className="h-11 border-secondary text-secondary hover:bg-secondary/5">Driver</Button>
           </Link>
         </div>
 
@@ -78,25 +63,12 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-2xl animate-fade-in border-t border-background-muted">
           <div className="flex flex-col p-6 gap-4">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.path}
-                className="text-lg font-medium py-2 border-b border-background-muted last:border-0"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="grid grid-cols-2 gap-4 mt-4">
-              <Link to="/rider" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+            <div className="grid grid-cols-2 gap-4">
+              <Link to="/login" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="outline" className="w-full">Log In</Button>
               </Link>
-              <Link to="/rider" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link to="/signup" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="primary" className="w-full">Sign Up</Button>
-              </Link>
-              <Link to="/driver" className="w-full col-span-2" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full border-secondary text-secondary">Driver Console</Button>
               </Link>
             </div>
           </div>

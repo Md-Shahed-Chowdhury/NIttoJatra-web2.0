@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
@@ -15,20 +15,31 @@ import {
   Zap,
   Info
 } from 'lucide-react';
+import { useState } from 'react';
 
 const PostRide = () => {
-  const [stops, setStops] = useState(['Airport', 'Banani']);
-  const [newStop, setNewStop] = useState('');
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    stops: ['Airport', 'Banani'],
+    newStop: '' // Assuming newStop should also be part of formData or remain separate
+  });
+  const [newStop, setNewStop] = useState(''); // Keeping newStop separate as it was before
 
   const addStop = () => {
     if (newStop.trim()) {
-      setStops([...stops, newStop.trim()]);
+      setFormData(prev => ({
+        ...prev,
+        stops: [...prev.stops, newStop.trim()]
+      }));
       setNewStop('');
     }
   };
 
   const removeStop = (index) => {
-    setStops(stops.filter((_, i) => i !== index));
+    setFormData(prev => ({
+      ...prev,
+      stops: prev.stops.filter((_, i) => i !== index)
+    }));
   };
 
   return (
@@ -58,7 +69,7 @@ const PostRide = () => {
               <div className="space-y-4">
                 <p className="text-sm font-bold text-text-secondary uppercase tracking-widest ml-1">Intermediate Stops (Optional)</p>
                 <div className="flex flex-wrap gap-2">
-                  {stops.map((stop, i) => (
+                  {formData.stops.map((stop, i) => (
                     <div key={i} className="flex items-center gap-2 px-3 py-2 bg-background-muted rounded-xl text-sm font-bold group">
                       {stop}
                       <button onClick={() => removeStop(i)} className="text-text-secondary hover:text-red-500 transition-colors">
@@ -192,25 +203,32 @@ const PostRide = () => {
               </div>
            </Card>
 
-           <Card className="bg-text-primary text-white space-y-6">
-              <h3 className="font-bold">Summary</h3>
-              <div className="space-y-3">
-                 <div className="flex justify-between text-xs">
-                    <span className="text-white/60">Estimated Earnings</span>
-                    <span className="font-bold">৳12,000 /mo</span>
-                 </div>
-                 <div className="flex justify-between text-xs">
-                    <span className="text-white/60">Subscription Efficiency</span>
-                    <span className="font-bold text-emerald-400">High</span>
-                 </div>
-              </div>
-              <div className="pt-4 space-y-4">
-                 <Button className="w-full h-14 bg-gradient-secondary border-0 text-white font-black text-lg shadow-xl" icon={ChevronRight}>
-                   Post This Ride
-                 </Button>
-                 <Button variant="ghost" className="w-full text-white/50 hover:text-white hover:bg-white/5">Save as Draft</Button>
-              </div>
-           </Card>
+            <Card className="bg-text-primary text-white space-y-6">
+               <h3 className="font-bold">Summary</h3>
+               <div className="space-y-3">
+                  <div className="flex justify-between text-xs">
+                     <span className="text-white/60">Estimated Earnings</span>
+                     <span className="font-bold">৳12,000 /mo</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                     <span className="text-white/60">Subscription Efficiency</span>
+                     <span className="font-bold text-emerald-400">High</span>
+                  </div>
+               </div>
+               <div className="pt-4 space-y-4">
+                  <div className="flex gap-4">
+                    <Button variant="outline" className="flex-1 h-14" onClick={() => navigate('/driver')}>Cancel</Button>
+                    <Button 
+                      variant="primary" 
+                      className="flex-[2] h-14 bg-gradient-secondary border-0 shadow-lg shadow-secondary/20"
+                      onClick={() => navigate('/driver/routes')}
+                    >
+                      Post Route
+                    </Button>
+                  </div>
+                  <Button variant="ghost" className="w-full text-white/50 hover:text-white hover:bg-white/5">Save as Draft</Button>
+               </div>
+            </Card>
 
            <div className="p-6 rounded-3xl bg-amber-500/5 border border-amber-500/10 flex items-start gap-4">
               <ShieldCheck className="text-amber-600 flex-shrink-0" size={20} />
