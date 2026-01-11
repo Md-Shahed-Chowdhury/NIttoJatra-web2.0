@@ -6,7 +6,7 @@ const Card = ({ children, className, glass = false, hover = true, ...props }) =>
     <div
       className={twMerge(
         'rounded-2xl p-6 transition-all duration-300',
-        glass ? 'glass' : 'bg-white shadow-premium border border-transparent',
+        glass ? 'glass' : 'card-premium',
         hover && 'hover:shadow-premium-hover hover:border-primary-light/10 transform hover:-translate-y-1',
         className
       )}

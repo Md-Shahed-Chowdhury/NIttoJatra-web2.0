@@ -34,16 +34,16 @@ const RiderLayout = ({ children }) => {
   ];
 
   return (
-    <div className="flex min-h-screen bg-background-alt overflow-hidden">
+    <div className="flex min-h-screen bg-slate-50 overflow-hidden text-slate-900">
       {/* Sidebar (Desktop) */}
       <aside className={twMerge(
-        'hidden md:flex flex-col bg-white border-r border-background-muted transition-all duration-300 relative z-30',
+        'hidden md:flex flex-col bg-white border-r border-slate-200 transition-all duration-300 relative z-30 shadow-sm',
         isCollapsed ? 'w-24' : 'w-72'
       )}>
         {/* Toggle Button */}
         <button 
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="absolute -right-3 top-10 w-6 h-6 bg-primary-light text-white rounded-full flex items-center justify-center shadow-lg z-50 hover:scale-110 transition-transform"
+          className="absolute -right-3 top-10 w-6 h-6 bg-slate-800 text-white rounded-full flex items-center justify-center shadow-lg z-50 hover:scale-110 transition-transform"
         >
           {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>
@@ -71,11 +71,11 @@ const RiderLayout = ({ children }) => {
                 className={twMerge(
                   'flex items-center gap-4 px-4 py-4 rounded-2xl transition-all duration-300 group relative',
                   isActive 
-                    ? 'bg-primary-light/10 text-primary-light' 
-                    : 'text-text-secondary hover:bg-background-muted hover:text-text-primary'
+                    ? 'bg-slate-200 text-slate-900 font-bold' 
+                    : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
                 )}
               >
-                <item.icon size={22} className={twMerge('transition-transform duration-300 group-hover:scale-110', isActive && 'text-primary-light')} />
+                <item.icon size={22} className={twMerge('transition-transform duration-300 group-hover:scale-110', isActive && 'text-slate-900')} />
                 {!isCollapsed && <span className="font-semibold">{item.name}</span>}
                 {!isCollapsed && item.badge && (
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 bg-secondary text-white text-[10px] font-bold px-2 py-1 rounded-full">
@@ -92,24 +92,24 @@ const RiderLayout = ({ children }) => {
 
         <div className="p-4 mt-auto">
           <div className={twMerge(
-            'bg-background-muted rounded-2xl p-4 flex items-center gap-3 transition-all',
+            'bg-slate-50 rounded-2xl p-4 flex items-center gap-3 transition-all border border-slate-100',
             isCollapsed ? 'justify-center' : 'justify-start'
           )}>
             <img 
               src="https://i.pravatar.cc/150?u=u001" 
               alt="User" 
-              className="w-10 h-10 rounded-xl object-cover ring-2 ring-white"
+              className="w-10 h-10 rounded-xl object-cover ring-2 ring-white shadow-sm"
             />
             {!isCollapsed && (
               <div className="flex-1 min-w-0">
-                <p className="font-bold text-sm text-text-primary truncate">Ahmed Rahman</p>
-                <p className="text-xs text-text-secondary truncate">Rider • 4.8★</p>
+                <p className="font-bold text-sm text-slate-800 truncate">Ahmed Rahman</p>
+                <p className="text-xs text-slate-500 truncate">Rider • 4.8★</p>
               </div>
             )}
             {!isCollapsed && (
                <button 
                  onClick={() => navigate('/')}
-                 className="text-text-secondary hover:text-red-500 transition-colors"
+                 className="text-slate-400 hover:text-red-500 transition-colors"
                >
                   <LogOut size={18} />
                </button>
@@ -119,19 +119,19 @@ const RiderLayout = ({ children }) => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto h-screen relative">
+      <main className="flex-1 overflow-y-auto h-screen relative bg-grid-pattern">
         {/* Mobile Header */}
-        <header className="md:hidden flex items-center justify-between p-4 bg-white border-b border-background-muted sticky top-0 z-40">
-           <button onClick={() => setIsMobileOpen(true)} className="p-2">
+        <header className="md:hidden flex items-center justify-between p-4 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40">
+           <button onClick={() => setIsMobileOpen(true)} className="p-2 text-slate-700">
              <Menu size={24} />
            </button>
-           <span className="font-bold text-lg">NittoJatra</span>
-           <div className="w-10 h-10 rounded-full bg-background-muted overflow-hidden">
+           <span className="font-bold text-lg text-slate-900">NittoJatra</span>
+           <div className="w-10 h-10 rounded-full bg-slate-100 overflow-hidden">
              <img src="https://i.pravatar.cc/150?u=u001" alt="Avatar" />
            </div>
         </header>
 
-        <div className="p-6 md:p-10 max-w-6xl mx-auto space-y-10">
+        <div className="p-6 md:p-10 max-w-7xl mx-auto space-y-10">
           {children}
         </div>
       </main>

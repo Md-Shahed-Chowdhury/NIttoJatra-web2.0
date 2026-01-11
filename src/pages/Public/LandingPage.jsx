@@ -23,9 +23,9 @@ const LandingPage = () => {
         <Faq />
         
         {/* Comparison Section (Simplified) */}
-        <section id="pricing" className="py-24 bg-background-alt overflow-hidden">
+        <section id="pricing" className="py-24 bg-black overflow-hidden">
           <div className="section-container">
-            <div className="bg-gradient-primary rounded-[3rem] p-8 md:p-16 text-white relative overflow-hidden">
+            <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-white/10 rounded-[3rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl">
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
                   <h2 className="text-3xl md:text-5xl font-bold font-heading">Ready to save 40% on your daily commute?</h2>

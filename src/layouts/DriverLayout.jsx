@@ -36,7 +36,7 @@ const DriverLayout = ({ children }) => {
   ];
 
   return (
-    <div className="flex min-h-screen bg-background-alt overflow-hidden">
+    <div className="flex min-h-screen bg-slate-50 overflow-hidden text-slate-900">
       {/* Sidebar (Desktop) */}
       <aside className={twMerge(
         'hidden md:flex flex-col bg-[#1A1C1E] text-white transition-all duration-300 relative z-30',
@@ -44,7 +44,7 @@ const DriverLayout = ({ children }) => {
       )}>
         <button 
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="absolute -right-3 top-10 w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg z-50 transition-transform hover:scale-110"
+          className="absolute -right-3 top-10 w-6 h-6 bg-slate-800 text-white rounded-full flex items-center justify-center shadow-lg z-50 transition-transform hover:scale-110"
         >
           {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>
@@ -72,11 +72,11 @@ const DriverLayout = ({ children }) => {
                 className={twMerge(
                   'flex items-center gap-4 px-4 py-4 rounded-2xl transition-all duration-300 group relative',
                   isActive 
-                    ? 'bg-secondary/10 text-secondary' 
+                    ? 'bg-slate-200 text-slate-900 font-bold' 
                     : 'text-white/50 hover:bg-white/5 hover:text-white'
                 )}
               >
-                <item.icon size={22} className={twMerge('transition-transform duration-300 group-hover:scale-110', isActive && 'text-secondary')} />
+                <item.icon size={22} className={twMerge('transition-transform duration-300 group-hover:scale-110', isActive && 'text-slate-900')} />
                 {!isCollapsed && <span className="font-semibold">{item.name}</span>}
                 {!isCollapsed && item.badge && (
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 bg-secondary text-white text-[10px] font-bold px-2 py-1 rounded-full">
@@ -117,21 +117,21 @@ const DriverLayout = ({ children }) => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto h-screen">
-        <header className="flex items-center justify-between p-6 bg-white border-b border-background-muted sticky top-0 z-40">
+      <main className="flex-1 overflow-y-auto h-screen bg-grid-pattern">
+        <header className="flex items-center justify-between p-6 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40">
            <div className="flex items-center gap-4">
-             <button onClick={() => setIsMobileOpen(true)} className="md:hidden p-2">
+             <button onClick={() => setIsMobileOpen(true)} className="md:hidden p-2 text-slate-700">
                <Menu size={24} />
              </button>
-             <h2 className="font-black text-xl font-heading">Driver Console</h2>
+             <h2 className="font-black text-xl font-heading text-slate-900">Driver Console</h2>
            </div>
            <div className="flex items-center gap-4">
-              <button className="w-10 h-10 rounded-xl hover:bg-background-muted flex items-center justify-center relative transition-colors">
-                 <Bell size={20} className="text-text-secondary" />
+              <button className="w-10 h-10 rounded-xl hover:bg-slate-100 flex items-center justify-center relative transition-colors">
+                 <Bell size={20} className="text-slate-500" />
                  <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-secondary rounded-full border-2 border-white" />
               </button>
-              <button className="w-10 h-10 rounded-xl hover:bg-background-muted flex items-center justify-center transition-colors">
-                 <Settings size={20} className="text-text-secondary" />
+              <button className="w-10 h-10 rounded-xl hover:bg-slate-100 flex items-center justify-center transition-colors">
+                 <Settings size={20} className="text-slate-500" />
               </button>
            </div>
         </header>

@@ -19,13 +19,13 @@ export default {
         success: '#10b981',
         warning: '#f59e0b',
         background: {
-          DEFAULT: '#ffffff',
-          alt: '#f9fafb',
-          muted: '#f3f4f6',
+          DEFAULT: '#f8fafc', // Slate-50 (Light premium gray)
+          alt: '#ffffff', // White
+          muted: '#f1f5f9', // Slate-100
         },
         text: {
-          primary: '#111827',
-          secondary: '#6b7280',
+          primary: '#0f172a', // Slate-900 (Dark text)
+          secondary: '#64748b', // Slate-500 (Medium gray)
         }
       },
       fontFamily: {

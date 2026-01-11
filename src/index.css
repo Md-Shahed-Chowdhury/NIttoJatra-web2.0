@@ -22,20 +22,22 @@ body {
 }
 
 @layer components {
+  /* Dark Glass (For Landing Page) */
   .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-premium;
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl;
   }
   
   .btn-primary {
-    @apply bg-gradient-primary text-white font-semibold py-3 px-6 rounded-xl shadow-premium hover:shadow-premium-hover transition-all duration-300 transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2;
+    @apply bg-gradient-primary text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2;
   }
   
   .btn-secondary {
     @apply border-2 border-primary-light text-primary-light font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-primary-light/5 active:scale-95 flex items-center justify-center gap-2;
   }
 
+  /* Premium White Card (For Internal Pages) */
   .card-premium {
-    @apply bg-white rounded-2xl p-6 shadow-premium hover:shadow-premium-hover transition-all duration-300 border border-transparent hover:border-primary-light/10;
+    @apply bg-white rounded-2xl p-6 shadow-[0_2px_8px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgb(0,0,0,0.08)] transition-all duration-300 border border-slate-100 hover:border-primary-light/20;
   }
 
   .heading-1 {
@@ -45,6 +47,22 @@ body {
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
   }
+
+  .bg-premium-dark {
+    @apply bg-black relative overflow-hidden;
+  }
+  
+  /* Subtle Background Pattern for Light Mode */
+  .bg-grid-pattern {
+    background-color: #f8fafc;
+    background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl;
+  }
 }
 
 /* Custom Scrollbar */
@@ -52,10 +70,10 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: theme('colors.background.muted');
+  background: theme('colors.background.DEFAULT');
 }
 ::-webkit-scrollbar-thumb {
-  background: theme('colors.primary.light');
+  background: theme('colors.background.muted');
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
