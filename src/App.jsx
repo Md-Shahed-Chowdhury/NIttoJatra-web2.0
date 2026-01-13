@@ -20,6 +20,8 @@ import ManageRoutes from './pages/Driver/ManageRoutes';
 import Earnings from './pages/Driver/Earnings';
 import RidersList from './pages/Driver/RidersList';
 import SafetyCenter from './pages/Rider/SafetyCenter';
+import Payout from './pages/Driver/Payout';
+import TransactionHistory from './pages/Driver/TransactionHistory';
 
 function App() {
   return (
@@ -110,6 +112,16 @@ function App() {
         <Route path="/driver/riders" element={
           <DriverLayout>
             <RidersList />
+          </DriverLayout>
+        } />
+        <Route path="/driver/payout" element={
+          <DriverLayout>
+            <Payout />
+          </DriverLayout>
+        } />
+        <Route path="/driver/history" element={
+          <DriverLayout>
+            <TransactionHistory />
           </DriverLayout>
         } />
         <Route path="/driver/messages" element={

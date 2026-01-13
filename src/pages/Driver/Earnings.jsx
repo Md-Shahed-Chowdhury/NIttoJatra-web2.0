@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import { 
@@ -16,6 +17,7 @@ import {
 } from 'lucide-react';
 
 const Earnings = () => {
+  const navigate = useNavigate();
   const stats = [
     { label: "Today's Earnings", value: "BDR 1,200", trend: "+12%", icon: DollarSign, color: "bg-emerald-500" },
     { label: "This Week", value: "BDR 8,450", trend: "+5%", icon: TrendingUp, color: "bg-blue-500" },
@@ -39,7 +41,7 @@ const Earnings = () => {
         </div>
         <div className="flex gap-3">
           <Button variant="outline" className="h-12" icon={Download}>Export Reports</Button>
-          <Button variant="primary" className="h-12 shadow-lg" icon={CreditCard}>Request Payout</Button>
+          <Button variant="primary" className="h-12 shadow-lg" icon={CreditCard} onClick={() => navigate('/driver/payout')}>Request Payout</Button>
         </div>
       </div>
 
@@ -97,7 +99,7 @@ const Earnings = () => {
               <History size={18} className="text-primary-light" />
               Recent Activity
             </h3>
-            <Button variant="ghost" className="text-xs font-bold text-primary-light h-auto p-0">View All</Button>
+            <Button variant="ghost" className="text-xs font-bold text-primary-light h-auto p-0" onClick={() => navigate('/driver/history')}>View All</Button>
           </div>
 
           <div className="space-y-4">
