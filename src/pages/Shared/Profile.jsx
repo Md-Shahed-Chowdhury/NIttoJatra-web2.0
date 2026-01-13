@@ -64,6 +64,31 @@ const Profile = ({ role = 'rider' }) => {
                   <Input label="Email Address" defaultValue="ahmed@example.com" icon={Mail} />
                   <Input label="Phone Number" defaultValue="+880 1712 345678" icon={Phone} />
                   <Input label="Emergency Contact" defaultValue="+880 1912 876543" icon={Phone} />
+                  <Input label="National ID Number" defaultValue="123 456 7890" icon={CreditCard} />
+               </div>
+
+               <div className="space-y-4 pt-4 border-t border-background-muted">
+                  <p className="text-sm font-bold text-text-secondary uppercase tracking-widest">Identity Verification</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                     <div className="space-y-2">
+                        <label className="text-xs font-bold text-text-secondary">NID Front Side</label>
+                        <div className="aspect-video rounded-xl bg-background-muted/50 border-2 border-dashed border-background-muted flex items-center justify-center text-text-secondary cursor-pointer hover:border-secondary hover:bg-secondary/5 transition-all group relative overflow-hidden">
+                           <div className="flex flex-col items-center gap-2">
+                              <Camera size={24} className="text-text-secondary/50 group-hover:text-secondary transition-colors" />
+                              <span className="text-[10px] font-bold">Upload / View</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div className="space-y-2">
+                        <label className="text-xs font-bold text-text-secondary">NID Back Side</label>
+                        <div className="aspect-video rounded-xl bg-background-muted/50 border-2 border-dashed border-background-muted flex items-center justify-center text-text-secondary cursor-pointer hover:border-secondary hover:bg-secondary/5 transition-all group relative overflow-hidden">
+                           <div className="flex flex-col items-center gap-2">
+                              <Camera size={24} className="text-text-secondary/50 group-hover:text-secondary transition-colors" />
+                              <span className="text-[10px] font-bold">Upload / View</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                </div>
                
                <Button variant="primary" className="h-12 px-8">Save Changes</Button>

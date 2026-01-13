@@ -13,7 +13,11 @@ import {
   ChevronRight,
   ShieldCheck,
   Zap,
-  Info
+  Info,
+  Snowflake,
+  Music,
+  Wifi,
+  Droplet
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -21,7 +25,7 @@ const PostRide = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     stops: ['Airport', 'Banani'],
-    newStop: '' // Assuming newStop should also be part of formData or remain separate
+    amenities: ['AC']
   });
   const [newStop, setNewStop] = useState(''); // Keeping newStop separate as it was before
 
@@ -39,6 +43,15 @@ const PostRide = () => {
     setFormData(prev => ({
       ...prev,
       stops: prev.stops.filter((_, i) => i !== index)
+    }));
+  };
+
+  const toggleAmenity = (amenity) => {
+    setFormData(prev => ({
+      ...prev,
+      amenities: prev.amenities.includes(amenity) 
+        ? prev.amenities.filter(a => a !== amenity)
+        : [...prev.amenities, amenity]
     }));
   };
 
@@ -135,6 +148,33 @@ const PostRide = () => {
                   </div>
                </div>
 
+               <div className="space-y-4">
+                  <p className="text-sm font-bold text-text-secondary uppercase tracking-widest ml-1">Facilities / Amenities</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                     {[
+                       { id: 'AC', label: 'AC', icon: Snowflake },
+                       { id: 'Music', label: 'Bluetooth', icon: Music },
+                       { id: 'Charging', label: 'USB Port', icon: Zap },
+                       { id: 'Water', label: 'Water', icon: Droplet },
+                       { id: 'Wifi', label: 'WiFi', icon: Wifi },
+                       { id: 'Legroom', label: 'Legroom', icon: Car } // Using Car as placeholder for Legroom if needed, or Maximize
+                     ].map(item => (
+                       <button 
+                         key={item.id} 
+                         onClick={() => toggleAmenity(item.id)}
+                         className={`p-3 rounded-xl border-2 flex flex-col items-center gap-2 transition-all ${
+                           formData.amenities.includes(item.id)
+                             ? 'bg-secondary/10 border-secondary text-secondary'
+                             : 'border-background-muted text-text-secondary hover:border-background-muted/80'
+                         }`}
+                       >
+                         <item.icon size={20} />
+                         <span className="text-xs font-bold">{item.label}</span>
+                       </button>
+                     ))}
+                  </div>
+               </div>
+               
                <div className="space-y-4">
                   <p className="text-sm font-bold text-text-secondary uppercase tracking-widest ml-1">Available Seats</p>
                   <div className="flex items-center gap-4">

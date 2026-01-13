@@ -82,6 +82,44 @@ const Signup = () => {
               <Input label="Email" type="email" placeholder="john@example.com" icon={Mail} required className="bg-black/20 border-white/10 text-white placeholder:text-gray-500" labelClassName="text-gray-300" />
               <Input label="Password" type="password" placeholder="••••••••" icon={Lock} required className="bg-black/20 border-white/10 text-white placeholder:text-gray-500" labelClassName="text-gray-300" />
               <Input label="Confirm Password" type="password" placeholder="••••••••" icon={Lock} required className="bg-black/20 border-white/10 text-white placeholder:text-gray-500" labelClassName="text-gray-300" />
+              
+              <div className="md:col-span-2 space-y-6 pt-4 border-t border-white/10">
+                <Input 
+                  label="National ID Number" 
+                  placeholder="e.g. 123 456 7890" 
+                  icon={ShieldCheck} 
+                  required 
+                  className="bg-black/20 border-white/10 text-white placeholder:text-gray-500" 
+                  labelClassName="text-gray-300" 
+                />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-gray-300 ml-1">NID Front Side</label>
+                    <div className="relative group">
+                      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-primary-light transition-colors">
+                        <Car size={20} />
+                      </div> {/* Re-using Car or better Icon if available, let's use a generic Frame or Image if imported, but safely let's use simple file input wrapper or standard Input */}
+                       <input 
+                        type="file" 
+                        accept="image/*"
+                        className="w-full bg-black/20 border border-white/10 rounded-xl py-3 px-4 pl-4 text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-primary-light file:text-white hover:file:bg-primary transition-all cursor-pointer"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-gray-300 ml-1">NID Back Side</label>
+                     <div className="relative group">
+                       <input 
+                        type="file" 
+                        accept="image/*"
+                         className="w-full bg-black/20 border border-white/10 rounded-xl py-3 px-4 pl-4 text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-primary-light file:text-white hover:file:bg-primary transition-all cursor-pointer"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-6">
